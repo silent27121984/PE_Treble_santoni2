@@ -19,6 +19,7 @@ VENDOR_PATH := device/xiaomi/msm8937-common
 # Overlay
 DEVICE_PACKAGE_OVERLAYS += \
     $(VENDOR_PATH)/overlay \
+    $(VENDOR_PATH)/overlay-mokee
 
 # Include device-specific product fragments
 include $(VENDOR_PATH)/product/*.mk
