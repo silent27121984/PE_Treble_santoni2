@@ -18,7 +18,19 @@
 # Inherit from those products. Most specific first.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
-#$(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_m.mk)
+
+# Include Bootanimation configuration
+TARGET_GAPPS_ARCH := arm64
+GAPPS_VARIANT := micro
+TARGET_BOOT_ANIMATION_RES := 720
+TARGET_INCLUDE_ARCORE := true
+
+#gapps
+-include vendor/gapps/config.mk
+
+# Extra Essential Gapps
+GAPPS_PRODUCT_PACKAGES += \
+    YouTube
 
 # Inherit some common Mokee stuff
 $(call inherit-product, vendor/aosp/config/common_full_phone.mk)
@@ -43,5 +55,5 @@ BUILD_FINGERPRINT := Xiaomi/santoni/santoni:7.1.2/N2G47H/V9.2.1.0.NAMCNEK:user/r
 PRODUCT_SYSTEM_PROPERTY_BLACKLIST += \
     ro.product.model
 
-#PRODUCT_PROPERTY_OVERRIDES += \
-#    ro.vendor.build.security_patch=2018-06-01
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.vendor.build.security_patch=2018-07-05
